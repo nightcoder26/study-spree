@@ -4,13 +4,13 @@ import "./MainComponent.css";
 import MainComponent from "./MainComponent.js";
 import Navbar from "./Navbar.js";
 
-function App() {
+const App = () => {
   return (
     <div>
       <Navbar />
       <MainComponent />
     </div>
   );
-}
+};
 
 export default App;
