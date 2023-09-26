@@ -1,16 +1,16 @@
-.main-component {
+/* .main-component {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  /* margin: 3rem; */
+  
 }
 
 .side-bar {
   width: 17%;
-  /* background-color:aquamarine; */
+  
   align-items: center;
   padding: auto;
-  /* background-color: aqua; */
+  
 }
 .cards-area-main {
   display: flex;
@@ -30,7 +30,7 @@
 }
 
 .card {
-  /* background-color: aquamarine; */
+  
   width: 400px;
   height: 400px;
   transform-style: preserve-3d;
@@ -67,4 +67,23 @@
   background-color: rgb(186, 186, 255);
   color: rgb(0, 0, 0);
   transform: rotateY(180deg);
+} */
+
+.side-bar {
+  width: 17%;
+
+  align-items: center;
+  padding: auto;
+}
+
+.topic:hover {
+  background-color: rgb(189, 189, 189);
+}
+
+.topic.clicked {
+  background-color: #666;
+}
+
+button:hover {
+  background-color: #0056b3;
 }

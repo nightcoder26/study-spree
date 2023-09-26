@@ -10,18 +10,12 @@ const MainComponent = () => {
   );
 };
 const Sidebar = () => {
-  // return (
-  //   <div className="side-bar">
-  //     <h1 className="topic-head">Categories</h1>
-  //     <Topic name="Statistics" />
-  //     <Topic name="Geography" />
-  //     <Topic name="History" />
-  //     <Topic name="Biology" />
-  //   </div>
-  // );
-
   const [categories, setCategories] = useState([]);
   const [inpCategory, setInpCategory] = useState("");
+  const [clickedTopics, setClickedTopics] = useState(
+    Array(categories.length).fill(false)
+  );
+  const [selectedTopic, setSelectedTopic] = useState(null);
 
   const handleAddCategory = () => {
     if (inpCategory !== "") {
@@ -29,17 +23,38 @@ const Sidebar = () => {
       setInpCategory("");
     }
   };
+
+  // const handleClick = (index) => {
+  //   const updatedClickedTopics = [...clickedTopics];
+  //   updatedClickedTopics[index] = !updatedClickedTopics[index];
+  //   setClickedTopics(updatedClickedTopics);
+  // };
+
+  const handleClick = (index) => {
+    if (selectedTopic === index) {
+      setSelectedTopic(null);
+    } else {
+      setSelectedTopic(index);
+    }
+  };
+
   return (
     <div className="side-bar">
-      <h1 className="topic-head">Topics</h1>
-      <ul className="topics">
+      <h1 className="topic-head" align="center">
+        Topics
+      </h1>
+      <ul className="topics" align="center">
         {categories.map((category, index) => (
-          <li key={index}>
+          <li
+            key={index}
+            className={`topic ${selectedTopic == index ? "clicked" : ""}`}
+            onClick={() => handleClick(index)}
+          >
             <h3>{category}</h3>
           </li>
         ))}
       </ul>
-      <div>
+      <div align="center">
         <input
           type="text"
           value={inpCategory}
@@ -76,15 +91,15 @@ const CardsArea = () => {
 // };
 
 const Card = (props) => {
-  return (
-    <div className="card">
-      <div className="front">
-        <h1>{props.title}</h1>
-      </div>
-      <div className="back">
-        <h3>{props.definition}</h3>
-      </div>
-    </div>
-  );
+  // return (
+  //   <div className="card">
+  //     <div className="front">
+  //       <h1>{props.title}</h1>
+  //     </div>
+  //     <div className="back">
+  //       <h3>{props.definition}</h3>
+  //     </div>
+  //   </div>
+  // );
 };
 export default MainComponent;
