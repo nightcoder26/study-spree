@@ -75,6 +75,16 @@
   align-items: center;
   padding: auto;
 }
+.cards-area-main {
+  color: black;
+}
+
+/* .side-bar {
+  width: 17%;
+
+  align-items: center;
+  padding: auto;
+} */
 
 .topic:hover {
   background-color: rgb(189, 189, 189);
@@ -86,4 +96,18 @@
 
 button:hover {
   background-color: #0056b3;
+}
+
+.bar-and-cardarea {
+  display: flex;
+  flex-direction: row;
+}
+
+.card {
+  display: inline-block;
+  width: 12rem;
+  border-width: 0.1cm;
+  border-style: solid;
+  padding: 3rem;
+  margin: 1rem;
 }

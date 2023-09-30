@@ -2,25 +2,67 @@ import React, { useState } from "react";
 import "./MainComponent.css";
 
 const MainComponent = () => {
+  const [topics, setTopics] = useState([]);
+  const [selectedTopic, setSelectedTopic] = useState(-1);
+  const [cards, setCards] = useState({});
+
+  const addTopic = (newTopic) => {
+    setTopics([...topics, newTopic]);
+  };
+  const addCard = () => {
+    const front = prompt("Enter Front Value:");
+    const back = prompt("Enter Back Value:");
+
+    if (front !== "" && back !== "") {
+      const newCard = { front, back };
+      const updatedCards = { ...cards };
+      if (topics[selectedTopic] !== "") {
+        if (!updatedCards[topics[selectedTopic]]) {
+          updatedCards[topics[selectedTopic]] = []; // Initialize an empty array if it doesn't exist
+        }
+        updatedCards[topics[selectedTopic]].push(newCard); // Add the new card to the array
+        setCards(updatedCards);
+      }
+    }
+  };
+
+  // console.log("topics", topic);
+
   return (
     <div className="main-component">
-      <Sidebar />
-      <CardsArea />
+      <div className="bar-and-cardarea">
+        <Sidebar
+          addTopic={addTopic}
+          selectedTopic={selectedTopic}
+          setSelectedTopic={setSelectedTopic}
+        />
+        {topics.map(
+          (topic, index) =>
+            selectedTopic === index && (
+              <CardsArea
+                key={index}
+                topic={topic}
+                addCard={addCard}
+                cards={cards}
+              />
+            )
+        )}
+      </div>
     </div>
   );
 };
-const Sidebar = () => {
+const Sidebar = ({ addTopic, selectedTopic, setSelectedTopic }) => {
   const [categories, setCategories] = useState([]);
   const [inpCategory, setInpCategory] = useState("");
-  const [clickedTopics, setClickedTopics] = useState(
-    Array(categories.length).fill(false)
-  );
-  const [selectedTopic, setSelectedTopic] = useState(null);
+  // const [clickedTopics, setClickedTopics] = useState(
+  //   Array(categories.length).fill(false)
+  // );
 
   const handleAddCategory = () => {
     if (inpCategory !== "") {
       setCategories(categories.concat(inpCategory));
       setInpCategory("");
+      addTopic(inpCategory);
     }
   };
 
@@ -32,7 +74,7 @@ const Sidebar = () => {
 
   const handleClick = (index) => {
     if (selectedTopic === index) {
-      setSelectedTopic(null);
+      setSelectedTopic(-1);
     } else {
       setSelectedTopic(index);
     }
@@ -47,7 +89,7 @@ const Sidebar = () => {
         {categories.map((category, index) => (
           <li
             key={index}
-            className={`topic ${selectedTopic == index ? "clicked" : ""}`}
+            className={`topic ${selectedTopic === index ? "clicked" : ""}`}
             onClick={() => handleClick(index)}
           >
             <h3>{category}</h3>
@@ -66,17 +108,18 @@ const Sidebar = () => {
   );
 };
 
-const CardsArea = () => {
+const CardsArea = ({ topic, addCard, cards }) => {
+  const topicCards = cards[topic] || [];
+
   return (
     <div className="cards-area-main">
-      {/* <button>Add Card</button> */}
-      <div className="cards-area">
-        <Card title="Mean" definition="Average" className="card" />
-        <Card
-          title="Median"
-          definition="Middle most element"
-          className="card"
-        />
+      <div className="add-button">
+        <button onClick={addCard}>Add Card</button>
+      </div>
+      <div className="cards">
+        {topicCards.map((card, index) => (
+          <Card key={index} front={card.front} back={card.back} />
+        ))}
       </div>
     </div>
   );
@@ -90,16 +133,16 @@ const CardsArea = () => {
 //   );
 // };
 
-const Card = (props) => {
-  // return (
-  //   <div className="card">
-  //     <div className="front">
-  //       <h1>{props.title}</h1>
-  //     </div>
-  //     <div className="back">
-  //       <h3>{props.definition}</h3>
-  //     </div>
-  //   </div>
-  // );
+const Card = ({ front, back }) => {
+  return (
+    <div className="card">
+      <div className="front">
+        <h2>{front}</h2>
+      </div>
+      <div className="back">
+        <h2>{back}</h2>
+      </div>
+    </div>
+  );
 };
 export default MainComponent;
