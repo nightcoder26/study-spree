@@ -18,9 +18,9 @@ const MainComponent = () => {
       const updatedCards = { ...cards };
       if (topics[selectedTopic] !== "") {
         if (!updatedCards[topics[selectedTopic]]) {
-          updatedCards[topics[selectedTopic]] = []; // Initialize an empty array if it doesn't exist
+          updatedCards[topics[selectedTopic]] = [];
         }
-        updatedCards[topics[selectedTopic]].push(newCard); // Add the new card to the array
+        updatedCards[topics[selectedTopic]].push(newCard);
         setCards(updatedCards);
       }
     }
@@ -100,6 +100,7 @@ const Sidebar = ({ addTopic, selectedTopic, setSelectedTopic }) => {
         <input
           type="text"
           value={inpCategory}
+          placeholder="Enter new topic"
           onChange={(e) => setInpCategory(e.target.value)}
         />
         <button onClick={handleAddCategory}>Add</button>
@@ -134,13 +135,20 @@ const CardsArea = ({ topic, addCard, cards }) => {
 // };
 
 const Card = ({ front, back }) => {
+  const [isFront, setIsFront] = useState(true);
+  const handleClick = () => {
+    setIsFront(!isFront);
+  };
   return (
-    <div className="card">
-      <div className="front">
+    <div className={`card ${isFront ? "front" : "back"}`} onClick={handleClick}>
+      {/* <div className="front">
         <h2>{front}</h2>
       </div>
       <div className="back">
         <h2>{back}</h2>
+      </div> */}
+      <div className="text">
+        <h2>{isFront ? front : back}</h2>
       </div>
     </div>
   );

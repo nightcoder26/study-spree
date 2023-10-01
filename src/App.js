@@ -6,9 +6,10 @@ import Navbar from "./Navbar.js";
 
 const App = () => {
   return (
-    <div>
+    <div className="whole-app">
       <Navbar />
       <MainComponent />
+      {/* <About /> */}
     </div>
   );
 };

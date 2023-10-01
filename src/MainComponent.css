@@ -68,15 +68,26 @@
   color: rgb(0, 0, 0);
   transform: rotateY(180deg);
 } */
+/* .main-component {
+  color: #00203f;
+} */
 
 .side-bar {
-  width: 17%;
+  width: 20%;
 
   align-items: center;
   padding: auto;
+  background-color: #f9fafb;
+  color: #111827;
+  border: 0.5px solid #d1d5db;
+  border-top: 0;
+  /* height: max-content; */
+}
+.topic-head {
+  color: #4951f5;
 }
 .cards-area-main {
-  color: black;
+  color: rgb(255, 255, 255);
 }
 
 /* .side-bar {
@@ -87,27 +98,84 @@
 } */
 
 .topic:hover {
-  background-color: rgb(189, 189, 189);
+  background-color: #eef0f1;
+  cursor: pointer;
 }
 
 .topic.clicked {
-  background-color: #666;
+  background-color: #28395c;
+  color: #ffffff;
 }
 
-button:hover {
-  background-color: #0056b3;
-}
+/* button:hover {
+} */
 
 .bar-and-cardarea {
   display: flex;
   flex-direction: row;
 }
 
-.card {
+.cards {
   display: inline-block;
-  width: 12rem;
-  border-width: 0.1cm;
+}
+
+.card {
+  color: #111827;
+  display: inline-block;
+  width: 15rem;
+  height: 10rem;
+  border-width: 1px;
   border-style: solid;
+  border-color: #d6d6d6;
+  /* border-color: #00203f; */
   padding: 3rem;
   margin: 1rem;
+  /* background-color: #666; */
+  cursor: pointer;
+  user-select: none;
+  border-radius: 0.7rem;
+  box-shadow: #d1d5db;
+  transform-style: preserve-3d;
+  transition: all 0.8s ease;
+}
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
+}
+
+.front {
+  background-color: #eef0f1;
+  backface-visibility: hidden;
+}
+
+.back {
+  background-color: #eef0f1;
+  backface-visibility: hidden;
+}
+/* .text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+
+button {
+  background-color: #4951f5;
+  border: none;
+  padding: 0.4rem;
+  border-radius: 0.2rem;
+  color: #ffffff;
+  font-weight: 500;
+  font-style: bold;
+  font-size: medium;
+  margin: 0.3rem;
+}
+button:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+  box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
+}
+input {
+  padding: 0.45rem;
+  border: 0.5px solid #7e7e7e;
+  border-radius: 0.2rem;
 }

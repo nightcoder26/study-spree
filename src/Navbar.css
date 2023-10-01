@@ -1,6 +1,13 @@
-whole {
+/* whole {
   position: sticky;
   z-index: 2;
+} */
+.whole {
+  color: #111827;
+}
+nav {
+  background-color: #ffffff;
+  border: 0.5px solid #d1d5db;
 }
 ul {
   list-style: none;
@@ -11,6 +18,12 @@ li {
   /* padding: 3rem; */
   padding-left: 3rem;
   padding-right: 3rem;
+  color: #111827;
+  font-weight: 500;
+}
+
+li:hover {
+  background-color: #f3f4f4;
 }
 
 nav {
@@ -26,6 +39,12 @@ nav {
 
 .heading {
   padding-right: 3rem;
+  padding-left: 3rem;
+  color: #4951f5;
+}
+
+.heading:hover {
+  background-color: #f3f4f4;
 }
 a {
   text-decoration: none;
