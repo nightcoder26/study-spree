@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/study-spree/static/css/main.4521f30b.css",
+    "main.js": "/study-spree/static/js/main.1a9010b0.js",
+    "static/js/787.46fbafc9.chunk.js": "/study-spree/static/js/787.46fbafc9.chunk.js",
+    "index.html": "/study-spree/index.html",
+    "main.4521f30b.css.map": "/study-spree/static/css/main.4521f30b.css.map",
+    "main.1a9010b0.js.map": "/study-spree/static/js/main.1a9010b0.js.map",
+    "787.46fbafc9.chunk.js.map": "/study-spree/static/js/787.46fbafc9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4521f30b.css",
+    "static/js/main.1a9010b0.js"
+  ]
+}
